@@ -142,25 +142,43 @@ Encryption key in keys.txt"""
 ##    else:pass
 with open("solved.txt","w") as ppp:
     ppp.write("")
-def Decrypt(encryptstring:str,key,level:int):
+def Decrypt(encryptstring:str,key,n:int):
     if n>3:
         n=3
     else:
         pass
-    for2,for3,dencry=""
+    for2,dencry="",""
     if type(key)==str:
         if len(key)==9:
             if "BeL0W" in key:
-                ...
+                index=int(key[5:])
+                for i in encryptstring:
+                    dencry+=chr(ord(i)-index)
+                return dencry
             elif "4FT3R" in key:
-                ...
+                index=int(key[5:])
+                for i in encryptstring:
+                    dencry+=chr(index-ord(i))
+                return dencry
             else:
                 raise ValueError("Key is of Incorrect Pattern")
         elif len(key)==10:
             if "BeL0W" in key:
-                ...
+                index=int(key[5:])
+                power=int(key[-1])
+                for i in encryptstring:
+                    dencry+=chr(ord(i)-index)
+                for mm in range(len(dencry)):
+                    for2+=chr(ord(dencry[mm])-((-1)**mm)*power)
+                print(for2)
             elif "4FT3R" in key:
-                ...
+                index=int(key[5:])
+                power=int(key[-1])
+                for i in encryptstring:
+                    dencry+=chr(index-ord(i))
+                for mm in range(len(dencry)):
+                    for2+=chr(ord(dencry[mm])-((-1)**mm)*power)
+                print(for2)
             else:
                 raise ValueError("Key is of Incorrect Pattern")
     elif type(key)==list:
