@@ -140,5 +140,31 @@ Encryption key in keys.txt"""
 ##            infinite=op.readlines()[-1]
 ##            print(infinite[:-1])
 ##    else:pass
-def Decrypt(string:str,key,level:int):
-    ...
+with open("solved.txt","w") as ppp:
+    ppp.write("")
+def Decrypt(encryptstring:str,key,level:int):
+    if n>3:
+        n=3
+    else:
+        pass
+    for2,for3,dencry=""
+    if type(key)==str:
+        if len(key)==9:
+            if "BeL0W" in key:
+                ...
+            elif "4FT3R" in key:
+                ...
+            else:
+                raise ValueError("Key is of Incorrect Pattern")
+        elif len(key)==10:
+            if "BeL0W" in key:
+                ...
+            elif "4FT3R" in key:
+                ...
+            else:
+                raise ValueError("Key is of Incorrect Pattern")
+    elif type(key)==list:
+        orig_str=BifidCipher.Bifid_Rev(encryptstring,key)
+        return orig_str
+    else:
+        raise TypeError("Type Not Supported")

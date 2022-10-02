@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form class="grid" action ="/result" method="POST">
+            <center>
+                {% if name %}
+                <h3 style="color: blue;">Hello {{name}},How are you?</h3>
+                {% endif %}
+            </center>
+            <label for ="Name">Enter Name: </label>
+            <input type="text" name="name" id="name">
+            <center><input type="submit" class="file_s"></center>
+        </form>
+    </body>
+</html>
