@@ -1,14 +1,4 @@
-##'''include input name and check if robot by recaptcha to let access file for BACKUP(update and clear) DONE!! 
-##if trying tkinter windows more than ONCE screens get mixed up,somtimes at first time too  ASKED!! SOLVED ig!! 
-##continue access using Sequest & do some "i accept things" then input some personal info to be used as confirmation for forgot secode if possible DONE!! & DONE!! 
-##in CSV order to be [a,q,send,rec] and never del DONE!! 
-##BIG LOOP to b changed something wrong?????? XX FIXED!!! 
-##solve menu problems DONE!!
-##csv read lines miss change window methods DONE!! 
-##something to force exit chat DONE!! 
-##remove all lines except no.1 in keys.txt DONE!! 
-##Can set a rating system window at end to inc lines DONE!!
-##ADD APPROPIATE COMMENTS'''
+'''include input name and check if robot by recaptcha to let access file for BACKUP(update and clear) DONE!! if trying tkinter windows more than ONCE screens get mixed up,somtimes at first time too  ASKED!! SOLVED ig!! continue access using Sequest & do some "i accept things" then input some personal info to be used as confirmation for forgot secode if possible DONE!! & DONE!! in CSV order to be [a,q,send,rec] and never del DONE!! BIG LOOP to b changed something wrong?????? XX FIXED!!! solve menu problems DONE! csv read lines miss change window methods DONE!! something to force exit chat DONE!! remove all lines except no.1 in keys.txt DONE!! Can set a rating system window at end to inc lines DONE'''
 import array
 from random import *
 import datetime
@@ -22,19 +12,6 @@ DIGITS=['0','1','2','3','4','5','6','7','8','9']
 LOCASE=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 UPCASE=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','p','Q','R','S','T','U','V','W','X','Y','Z']
 SYMBOLS=['@','#','$','%','=',':','?','.','/','|','~','>','*','(',')','<']
-def enterxp():
-    if im1==1:
-        return 1
-    elif im2==1:
-        return 2
-    elif im3==1:
-        return 3
-    elif im4==1:
-        return 4
-    elif im5==1:
-        return 5
-    else:
-        return None
 def Click():
     global result
     result=input_result.get()
@@ -69,7 +46,6 @@ def openNewWindow():
             success_check="no"
     sentence.bind("<Enter>",Over)
     sentence.pack()
-#PASSWORD GENERATOR FOR SECURITY CODE
 def recaptcha():
     MAX_LEN=12
     COMBINED_LIST=DIGITS+UPCASE+LOCASE+SYMBOLS
@@ -90,23 +66,19 @@ print("Terms of the Service:\nYour chat data will be completely removed from our
 for yip in range(5):
     Allowr=input("Do you agree to the Terms of the services(YES/NO): ")
     if Allowr.lower()=="yes":
-#INPUT USER,RECIEVER,SECURITY Q/A
         user=input("Enter USER/Sender: ")
         chat2=input("Enter Reciever: ")
         q1,q2,q3,q4,q5="Name of your pet","Name of your favorite city","Your dream job","Your favorite subject","Your mother tongue"
         Sequest=input(f"For Security purposes answer any 1 of the following questions in the given format\nAnswer,Question number\n1. {q1}\n2. {q2}\n3. {q3}\n4. {q4}\n5. {q5}\n: ")
         Sequest=Sequest.split(",")
         secode=recaptcha()
-#INCLUDE APPROPOS DATA INTO LIST FOR ENTERING INTO .csv
         Sequest+=[f"{user}",f"{chat2}",f"{secode}"]
         file=open("data.csv","a",newline="")
         writer=csv.writer(file)
         writer.writerow(Sequest)
         file.close()
-####Change once Bifid Corrected
-        encrylevel=randint(1,2)
+        encrylevel=randint(1,3)
         print(f"Your Security Code is: {secode}")
-#GET CHAT START TIME AND ENTER ON ALL RELEVENT FILES
         timenow=str(datetime.datetime.now())
         with open("user.txt","w") as sender:
             sender.write(f"Chat starting at {(timenow)[:19:]}\n")
@@ -115,6 +87,7 @@ for yip in range(5):
         with open("backup.txt","w") as backup:
             backup.write(f"Original Back Up started at {(timenow)[:19:]}\n")
         userside,thirdparty,backup=open("user.txt","a"),open("thirdparty.txt","a",encoding="utf-8"),open("backup.txt","a")
+        #pass for jo if wrong send to encrypted,,os.startfile("ksp.txt") IMP,,ram shyam,,ram,shyam-:po.txt,,jo:lp.txt(encrypted of po)
         messagecheck=""
         count_up=0
         bye_lines=[]
@@ -123,7 +96,7 @@ for yip in range(5):
         while count_up!=1:
             if i%2==0:
                 message=input("{}: ".format(user))
-                if message.strip()=="EXIT":#FORCE exit CHAT
+                if message.strip()=="EXIT":
                     count_up=1
                 else:
                     userside.write("{} : {}".format(user,message))
@@ -131,7 +104,7 @@ for yip in range(5):
                     thirdparty.write("{} : {}".format(dencrypt.Encrypt(user,encrylevel,"no"),dencrypt.Encrypt(message,encrylevel,"no")))
             else:
                 message=input("{}: ".format(chat2))
-                if message.strip()=="EXIT":#FORCE exit CHAT
+                if message.strip()=="EXIT":
                     count_up=1
                 else:
                     userside.write("{} : {}".format(chat2,message))
@@ -140,11 +113,10 @@ for yip in range(5):
             backup.write("\n")
             userside.write("\n")
             thirdparty.write("\n")
-            time.sleep(1)#PAUSE BEFORE NEXT INPUT
+            time.sleep(1)
             messagecheck=message.lower()
             if "bye" in messagecheck:
                 bye_lines.append(i)
-#IF bye IS SENT CONSECUTIVELY BY BOTH USERS THEN EXIT CHAT
             if len(bye_lines)>1:
                 if bye_lines[-1]-bye_lines[-2]==1:
                     count_up=1
@@ -155,7 +127,6 @@ for yip in range(5):
         backup.close()
         print(("✨"*10)+"\n")
         print("MENU")
-#ACCESS CURRENT USERS' SECURITY Q/A FOR FOLLOWING ACCESS ALLOWANCES {CSV}
         def FindQ():
             file=open("data.csv","r",newline="")
             r=csv.reader(file)
@@ -182,26 +153,26 @@ for yip in range(5):
                 time_check_start=datetime.datetime.now()
                 timer=time_check_start+datetime.timedelta(minutes=2)
                 a=input("Enter Security code: ")
-                if datetime.datetime.now()<timer:#TIME LIMIT OF 2 MIN TO ANSWER SENSITIVE INFO
+                if datetime.datetime.now()<timer:
                     pass
                 else:
                     a=""
                     print("Too slow")
                 if a==secode:
-                    os.startfile("user.txt")#OPEN .txt IN NOTEPAD
+                    os.startfile("user.txt")
                 else:
                     for i in range(3):
                         print("Try Again")
                         time_check_start=datetime.datetime.now()
                         timer=time_check_start+datetime.timedelta(minutes=2)
                         a=input("Enter Security code: ")
-                        if datetime.datetime.now()<timer:#TIME LIMIT OF 2 MIN TO ANSWER SENSITIVE INFO
+                        if datetime.datetime.now()<timer:
                             pass
                         else:
                             a=""
                             print("Too slow")
                         if a==secode:
-                            os.startfile("thirdparty.txt")#OPEN .txt IN NOTEPAD
+                            os.startfile("thirdparty.txt")
                             break
                         else:
                             print("Access Denied")
@@ -209,7 +180,7 @@ for yip in range(5):
                 time_check_start=datetime.datetime.now()
                 timer=time_check_start+datetime.timedelta(minutes=2)
                 a=input("Enter Security code: ")
-                if datetime.datetime.now()<timer:#TIME LIMIT OF 2 MIN TO ANSWER SENSITIVE INFO
+                if datetime.datetime.now()<timer:
                     pass
                 else:
                     a=""
@@ -230,7 +201,7 @@ for yip in range(5):
                 time_check_start=datetime.datetime.now()
                 timer=time_check_start+datetime.timedelta(minutes=2)
                 a=input("Enter Security code: ")
-                if datetime.datetime.now()<timer:#TIME LIMIT OF 2 MIN TO ANSWER SENSITIVE INFO
+                if datetime.datetime.now()<timer:
                     pass
                 else:
                     a=""
@@ -251,16 +222,14 @@ for yip in range(5):
                             message=input("{}: ".format(user))
                             if message.strip()=="EXIT":
                                 count_up=1
-                            else:
-                                chat_cont.write("{} : {}".format(user,message))
-                                thirdparty.write("{} : {}".format(dencrypt.Encrypt(user,encrylevel,"no"),dencrypt.Encrypt(message,encrylevel,"no")))
+                            chat_cont.write("{} : {}".format(user,message))
+                            thirdparty.write("{} : {}".format(dencrypt.Encrypt(user,encrylevel,"no"),dencrypt.Encrypt(message,encrylevel,"no")))
                         else:
                             message=input("{}: ".format(chat2))
                             if message.strip()=="EXIT":
                                 count_up=1
-                            else:
-                                chat_cont.write("{} : {}".format(chat2,message))
-                                thirdparty.write("{} : {}".format(dencrypt.Encrypt(chat2,encrylevel,"no"),dencrypt.Encrypt(message,encrylevel,"no")))
+                            chat_cont.write("{} : {}".format(chat2,message))
+                            thirdparty.write("{} : {}".format(dencrypt.Encrypt(chat2,encrylevel,"no"),dencrypt.Encrypt(message,encrylevel,"no")))
                         chat_cont.write("\n")
                         thirdparty.write("\n")
                         time.sleep(1)
@@ -279,7 +248,7 @@ for yip in range(5):
                 time_check_start=datetime.datetime.now()
                 timer=time_check_start+datetime.timedelta(minutes=2)
                 a=input("Enter Security code: ")
-                if datetime.datetime.now()<timer:#TIME LIMIT OF 2 MIN TO ANSWER SENSITIVE INFO
+                if datetime.datetime.now()<timer:
                     pass
                 else:
                     a=""
@@ -287,7 +256,7 @@ for yip in range(5):
                 if a==secode:
                     randomiser=randint(0,1)
                     n1,n2=randint(0,999),randint(0,999)
-                    root=Tk()#OPEN TK WINDOW
+                    root=Tk()
                     root.title("Login Reqd")
                     center_x,center_y=root.winfo_screenwidth(),root.winfo_screenheight()
                     root.geometry("300x300+{}+{}".format(center_x//2,center_y//2))
@@ -298,7 +267,7 @@ for yip in range(5):
                     greeting.pack()
                     sentence=Label(text="Enter the Result below\n",foreground="green")
                     sentence.pack()
-                    input_result=Entry()#FOR TEXT INPUT ON TK WINDOW
+                    input_result=Entry()
                     result=""
                     input_result.pack()
                     Label(text="\n").pack()
@@ -312,7 +281,7 @@ for yip in range(5):
                         backupp.write(f"New Backup at {str(datetime.datetime.now())[:19:]}\n")
                         use=usertxt.readlines()
                         for u in use:
-                            if u=="\n" or "Chat starting at" in u or "Chat Continued at" in u:#FOR SKIPPING UNWANTED LINES
+                            if u=="\n" or "Chat starting at" in u or "Chat Continued at" in u:
                                 pass
                             else:
                                 backupp.write(u)
@@ -326,7 +295,7 @@ for yip in range(5):
                 time_check_start=datetime.datetime.now()
                 timer=time_check_start+datetime.timedelta(minutes=2)
                 a=input("Enter Security code: ")
-                if datetime.datetime.now()<timer:#TIME LIMIT OF 2 MIN TO ANSWER SENSITIVE INFO
+                if datetime.datetime.now()<timer:
                     pass
                 else:
                     a=""
@@ -334,7 +303,7 @@ for yip in range(5):
                 if a==secode:
                     randomiser=randint(0,1)
                     n1,n2=randint(0,999),randint(0,999)
-                    root=Tk()#OPEN TK WINDOW
+                    root=Tk()
                     root.title("Login Reqd")
                     center_x,center_y=root.winfo_screenwidth(),root.winfo_screenheight()
                     root.geometry("300x300+{}+{}".format(center_x//2,center_y//2))
@@ -345,7 +314,7 @@ for yip in range(5):
                     greeting.pack()
                     sentence=Label(text="Enter the Result below\n",foreground="green")
                     sentence.pack()
-                    input_result=Entry()#FOR TEXT INPUT ON TK WINDOW
+                    input_result=Entry()
                     result=""
                     input_result.pack()
                     Label(text="\n").pack()
@@ -354,7 +323,7 @@ for yip in range(5):
                     btn.pack()
                     mainloop()
                     if success_check=="ok":
-                        os.startfile("backup.txt")#OPEN .txt IN NOTEPAD
+                        os.startfile("backup.txt")
                     else:
                         print("Try Again Later")
                 else:
@@ -363,7 +332,7 @@ for yip in range(5):
                 time_check_start=datetime.datetime.now()
                 timer=time_check_start+datetime.timedelta(minutes=2)
                 a=input("Enter Security code: ")
-                if datetime.datetime.now()<timer:#TIME LIMIT OF 2 MIN TO ANSWER SENSITIVE INFO
+                if datetime.datetime.now()<timer:
                     pass
                 else:
                     a=""
@@ -371,7 +340,7 @@ for yip in range(5):
                 if a==secode:
                     randomiser=randint(0,1)
                     n1,n2=randint(0,999),randint(0,999)
-                    root=Tk()#OPEN TK WINDOW
+                    root=Tk()
                     root.title("Login Reqd")
                     center_x,center_y=root.winfo_screenwidth(),root.winfo_screenheight()
                     root.geometry("300x300+{}+{}".format(center_x//2,center_y//2))
@@ -382,7 +351,7 @@ for yip in range(5):
                     greeting.pack()
                     sentence=Label(text="Enter the Result below\n",foreground="green")
                     sentence.pack()
-                    input_result=Entry()#FOR TEXT INPUT ON TK WINDOW
+                    input_result=Entry()
                     result=""
                     input_result.pack()
                     Label(text="\n").pack()
@@ -406,10 +375,9 @@ for yip in range(5):
             menuchoose=input("Do you want to continue ?(yes/no) : ")
             menuchoose=menuchoose.lower()
         print("Thank You for using our Services")
-        root=Tk()#OPEN TK WINDOW
+        root=Tk()
         Label(text="How was your Experience ?\nPlease click on the numbered star then submit").pack()
         im1,im2,im3,im4,im5=0,0,0,0,0
-        #FOR EXPERIENCE VALUE SELECTED=1 , OTHERS=0
         def image1():
             global im1,im2,im3,im4,im5
             im1,im2,im3,im4,im5=1,0,0,0,0
@@ -425,10 +393,8 @@ for yip in range(5):
         def image5():
             global im5,im1,im2,im3,im4
             im5,im1,im2,im3,im4=1,0,0,0,0
-#BUTTON LOOKS LIKE A PHOTO
         rate1=PhotoImage(file="star1.png")
         img1=Button(root,image=rate1,command=image1)
-        #img1.grid(row,col)
         img1.pack(side=LEFT)
         rate2=PhotoImage(file="star2.png")
         img2=Button(root,image=rate2,command=image2)
@@ -442,10 +408,9 @@ for yip in range(5):
         rate5=PhotoImage(file="star5.png")
         img5=Button(root,image=rate5,command=image5)
         img5.pack(side=LEFT)
-        p=Button(root,text="Submit",command=root.destroy)#ON SELECTION OF SUBMIT WINDOW CLOSES
+        p=Button(root,text="Submit",command=root.destroy)
         p.pack()
         root.mainloop()
-#ENTER EXP INTO .csv LIKE WE DO IN .txt AS BEING ENTERED SEPRATELY
         with open("data.csv") as f:
             global d
             d=f.readlines()
@@ -476,7 +441,6 @@ for yip in range(5):
         p=open("data.csv","w")
         p.writelines(d)
         p.close()
-#SINCE encrylevel(3) USES BIFID CIPHR AND LIST USED FOR ALL ENCRYPTION IS SAME THE XTRA LINES ARE REMOVED
         if encrylevel==3:
             with open("keys.txt","r",encoding="utf-8") as deleter:
                 global rem
@@ -491,7 +455,6 @@ for yip in range(5):
             dodo.write("")
         break
     else:
-#WAIT BEFORE CONTINUING LOOP
         time.sleep(30)
     if yip==4:
         print("Bye Thank You for Visiting Us")
