@@ -142,11 +142,7 @@ Encryption key in keys.txt"""
 ##    else:pass
 with open("solved.txt","w") as ppp:
     ppp.write("")
-def Decrypt(encryptstring:str,key,n:int):
-    if n>3:
-        n=3
-    else:
-        pass
+def Decrypt(encryptstring:str,key):
     for2,dencry="",""
     if type(key)==str:
         if len(key)==9:
@@ -164,21 +160,21 @@ def Decrypt(encryptstring:str,key,n:int):
                 raise ValueError("Key is of Incorrect Pattern")
         elif len(key)==10:
             if "BeL0W" in key:
-                index=int(key[5:])
+                index=int(key[5:-1:])
                 power=int(key[-1])
                 for i in encryptstring:
                     dencry+=chr(ord(i)-index)
                 for mm in range(len(dencry)):
                     for2+=chr(ord(dencry[mm])-((-1)**mm)*power)
-                print(for2)
+                return for2
             elif "4FT3R" in key:
-                index=int(key[5:])
+                index=int(key[5:-1:])
                 power=int(key[-1])
                 for i in encryptstring:
                     dencry+=chr(index-ord(i))
                 for mm in range(len(dencry)):
-                    for2+=chr(ord(dencry[mm])-((-1)**mm)*power)
-                print(for2)
+                    for2+=chr(ord(dencry[mm])+((-1)**mm)*power)
+                return for2
             else:
                 raise ValueError("Key is of Incorrect Pattern")
     elif type(key)==list:
@@ -186,5 +182,5 @@ def Decrypt(encryptstring:str,key,n:int):
         return orig_str
     else:
         raise TypeError("Type Not Supported")
-#print(Encrypt("Hi im Pratham",3,"no"))
-#print(Decrypt("J!^slWMDW3m×lW",[['&', '*', '(', ')', '_', '+', '{', '}', '|', ':'], ['"', '<', '>', '?', '`', '-', '=', '[', ']', '\\'], ['o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x'], [';', "'", ',', '.', '/', '÷', '×', '±', '°', 'ǁ'], ['K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T'], ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'], ['y', 'z', '0', '1', '2', '3', '4', '5', '6', '7'], ['8', '9', ' ', '~', '!', '@', '#', '$', '%', '^'], ['U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd'], ['e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n']],3))
+print(Encrypt("Hi im Pratham",2,"no"))
+print(Decrypt("̫˸͓˸̣̆́˯̒˭̋̀̆","4FT3R08749"))
