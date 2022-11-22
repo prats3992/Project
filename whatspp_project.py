@@ -86,7 +86,7 @@ def recaptcha():
     for x in temp_pass_list:
         password+=x
     return password
-print("Terms of the Service:\nYour chat data will be completely removed from our files upon termination of the services")
+print("\n\nTerms of the Service:\nYour chat data will be completely removed from our files upon termination of the services")
 for yip in range(5):
     Allowr=input("Do you agree to the Terms of the services(YES/NO): ")
     if Allowr.lower()=="yes":
@@ -180,7 +180,7 @@ for yip in range(5):
             option=input("1. View chat\n2. Delete chat\n3. Continue chat\n4. Update backup\n5. View backup\n6. Clear backup\n(Enter only number): ")
             if option=="1":
                 time_check_start=datetime.datetime.now()
-                timer=time_check_start+datetime.timedelta(minutes=2)
+                timer=time_check_start+datetime.timedelta(seconds=50)
                 a=input("Enter Security code: ")
                 if datetime.datetime.now()<timer:#TIME LIMIT OF 2 MIN TO ANSWER SENSITIVE INFO
                     pass
@@ -193,7 +193,7 @@ for yip in range(5):
                     for i in range(3):
                         print("Try Again")
                         time_check_start=datetime.datetime.now()
-                        timer=time_check_start+datetime.timedelta(minutes=2)
+                        timer=time_check_start+datetime.timedelta(seconds=50)
                         a=input("Enter Security code: ")
                         if datetime.datetime.now()<timer:#TIME LIMIT OF 2 MIN TO ANSWER SENSITIVE INFO
                             pass
@@ -207,7 +207,7 @@ for yip in range(5):
                             print("Access Denied")
             elif option=="2":
                 time_check_start=datetime.datetime.now()
-                timer=time_check_start+datetime.timedelta(minutes=2)
+                timer=time_check_start+datetime.timedelta(seconds=50)
                 a=input("Enter Security code: ")
                 if datetime.datetime.now()<timer:#TIME LIMIT OF 2 MIN TO ANSWER SENSITIVE INFO
                     pass
@@ -228,7 +228,7 @@ for yip in range(5):
                     print("ERROR\nYou are not the authorized user")
             elif option=="3":
                 time_check_start=datetime.datetime.now()
-                timer=time_check_start+datetime.timedelta(minutes=2)
+                timer=time_check_start+datetime.timedelta(seconds=50)
                 a=input("Enter Security code: ")
                 if datetime.datetime.now()<timer:#TIME LIMIT OF 2 MIN TO ANSWER SENSITIVE INFO
                     pass
@@ -277,7 +277,7 @@ for yip in range(5):
                     print("Try Again Later")
             elif option=="4":
                 time_check_start=datetime.datetime.now()
-                timer=time_check_start+datetime.timedelta(minutes=2)
+                timer=time_check_start+datetime.timedelta(seconds=50)
                 a=input("Enter Security code: ")
                 if datetime.datetime.now()<timer:#TIME LIMIT OF 2 MIN TO ANSWER SENSITIVE INFO
                     pass
@@ -324,7 +324,7 @@ for yip in range(5):
                     print("Access Denied")
             elif option=="5":
                 time_check_start=datetime.datetime.now()
-                timer=time_check_start+datetime.timedelta(minutes=2)
+                timer=time_check_start+datetime.timedelta(seconds=50)
                 a=input("Enter Security code: ")
                 if datetime.datetime.now()<timer:#TIME LIMIT OF 2 MIN TO ANSWER SENSITIVE INFO
                     pass
@@ -361,7 +361,7 @@ for yip in range(5):
                     print("Access Denied")
             elif option=="6":
                 time_check_start=datetime.datetime.now()
-                timer=time_check_start+datetime.timedelta(minutes=2)
+                timer=time_check_start+datetime.timedelta(seconds=50)
                 a=input("Enter Security code: ")
                 if datetime.datetime.now()<timer:#TIME LIMIT OF 2 MIN TO ANSWER SENSITIVE INFO
                     pass
