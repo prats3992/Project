@@ -182,5 +182,5 @@ def Decrypt(encryptstring:str,key):
         return orig_str
     else:
         raise TypeError("Type Not Supported")
-print(Encrypt("Hi im Pratham",2,"no"))
-print(Decrypt("̫˸͓˸̣̆́˯̒˭̋̀̆","4FT3R08749"))
+#print(Encrypt("Hi im Pratham",2,"no"))
+#print(Decrypt("̫˸͓˸̣̆́˯̒˭̋̀̆","4FT3R08749"))
