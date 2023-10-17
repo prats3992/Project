@@ -36,24 +36,17 @@ def Bifid(string):
             if i in j:
                 row += f"{rand_list.index(j)}"
                 col += f"{j.index(i)}"
-# print(rand_list)
-# print(f"Row: {row}")
-# print(f"Col: {col}")
     row_split, col_split = [], []
     for i in range(0, len(col), 2):
         col_split.append(col[i]+col[i+1])
         row_split.append(row[i]+row[i+1])
     final_list = []
-# print(f"Col list : {col_split}")
-# print(f"Row list : {row_split}")
     for i in range(len(row_split)):
         final_list.append(row_split[i]+col_split[i])
-# print(final_list)
     for i in final_list:
         a, b, c, d = int(i[0]), int(i[1]), int(i[2]), int(i[3])
         output += rand_list[a][b]
         output += rand_list[c][d]
-# print(output)
     return output, rand_list
 
 
