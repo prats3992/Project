@@ -19,6 +19,7 @@ from tkinter import *
 from tkinter.ttk import *
 import dencrypt
 import re
+import utils
 DIGITS = [str(i) for i in range(10)]
 LOCASE = [chr(i) for i in range(ord('a'), ord('z')+1)]
 UPCASE = [chr(i) for i in range(ord('A'), ord('Z')+1)]

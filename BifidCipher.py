@@ -1,35 +1,22 @@
 import random
+from utils import generate_rand_list
+
 """
 [[ABCDE],[FGHIJ],[KLMNO],[PQRST],[VWXYZ]]
 [[abcde],[fghij],[klmno],[pqrst],[vwxyz]]
 [[123],[456],[789]]
  ~!@#$%^&*()_+{}|:"<>?`-=[]\;',./
- """
+"""
 # square matrix of 10
 # list no==row , inside list index==col
 # FOR EXPLANATION VISIT https://www.geeksforgeeks.org/bifid-cipher-in-cryptography/
-list_hold = [["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
-             ["K", "L", "M", "N", "O", "P", "Q", "R", "S", "T"],
-             ["U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d"],
-             ["e", "f", "g", "h", "i", "j", "k", "l", "m", "n"],
-             ["o", "p", "q", "r", "s", "t", "u", "v", "w", "x"],
-             ["y", "z", "0", "1", "2", "3", "4", "5", "6", "7"],
-             ["8", "9", " ", "~", "!", "@", "#", "$", "%", "^"],
-             ["&", "*", "(", ")", "_", "+", "{", "}", "|", ":"],
-             ['"', "<", ">", "?", "`", "-", "=", "[", "]", "\\"],
-             [";", "'", ",", ".", "/", f"{chr(247)}", f"{chr(215)}", f"{chr(177)}", f"{chr(176)}", f"{chr(449)}"]]
-rand_list = []
-for i in range(len(list_hold)):
-    k = random.choice(list_hold)
-    rand_list.append(k)
-    list_hold.remove(k)
+
+rand_list = generate_rand_list()
+print(len(rand_list))
 
 
 def Bifid(string):
-    if len(string) % 2 == 0:
-        pass
-    else:
-        string += " "
+    string += " " if len(string) % 2 != 0 else ""
     row = col = output = ""
     for i in string:
         for j in rand_list:
@@ -38,8 +25,8 @@ def Bifid(string):
                 col += f"{j.index(i)}"
     row_split, col_split = [], []
     for i in range(0, len(col), 2):
-        col_split.append(col[i]+col[i+1])
-        row_split.append(row[i]+row[i+1])
+        col_split.append(col[i:i+2])
+        row_split.append(row[i:i+2])
     final_list = []
     for i in range(len(row_split)):
         final_list.append(row_split[i]+col_split[i])
@@ -51,7 +38,6 @@ def Bifid(string):
 
 
 def Bifid_Rev(output: str, rev_list: list):
-    # z=[]
     y = []
     for i in range(0, len(output), 2):
         p = output[i]+output[i+1]
@@ -61,21 +47,14 @@ def Bifid_Rev(output: str, rev_list: list):
         for j in rev_list:
             if output[i+1] in j:
                 y.append(str(rev_list.index(j))+str(j.index(output[i+1])))
-        # z.append(p)
-        # print(y)
-        # print(z)
     row_split, col_split = [], []
     for i in range(0, len(y), 2):
         row_split.append(y[i])
         col_split.append(y[i+1])
-    # print(row_split)
-    # print(col_split)
     row = col = ""
     for i in range(len(row_split)):
         row += row_split[i]
         col += col_split[i]
-    # print(row)
-    # print(col)
     rev = ""
     for i in range(len(col)):
         rev += rev_list[int(row[i])][int(col[i])]
@@ -85,5 +64,15 @@ def Bifid_Rev(output: str, rev_list: list):
     else:
         return rev
 
-# print(Bifid("Hello Stupid"))
-# print(Bifid_Rev("Fyj5o OFs'hx", [['8', '9', ' ', '~', '!', '@', '#', '$', '%', '^'], ['&', '*', '(', ')', '_', '+', '{', '}', '|', ':'], ['K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T'], ['U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd'], ['o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x'], ['e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'], [';', "'", ',', '.', '/', '÷', '×', '±', '°', 'ǁ'], ['y', 'z', '0', '1', '2', '3', '4', '5', '6', '7'], ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'], ['"', '<', '>', '?', '`', '-', '=', '[', ']', '\\']]))
+
+def main():
+    plaintext = input("Enter plaintext: ")
+    ciphertext, rand_list = Bifid(plaintext)
+    print(f"Ciphertext: {ciphertext}")
+    print(f"Random List: {rand_list}")
+    decrypted_text = Bifid_Rev(ciphertext, rand_list)
+    print(f"Decrypted Text: {decrypted_text}")
+
+
+if __name__ == "__main__":
+    main()

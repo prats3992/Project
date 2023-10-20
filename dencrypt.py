@@ -1,28 +1,7 @@
 from random import *
 import BifidCipher
-pa = []
-i = 33
-while i < 2045:
-    if i in range(127, 160+1) or i in range(768, 879+1) or i in range(888, 890+1):
-        pass
-    elif i in range(896, 899+1) or i in range(1480, 1487+1) or i in range(1515, 1518+1):
-        pass
-    elif i in range(1525, 1535+1) or i in range(1970, 1983+1) or i in range(2027, 2036):
-        pass
-    elif i in range(1958, 1969) or i in range(1872, 1920) or i in range(1839, 1869):
-        pass
-    elif i in range(1770, 1808) or i in range(1759, 1769) or i in range(1646, 1756):
-        pass
-    elif i in range(1523, 1633) or i in range(1424, 1480) or i in range(1367, 1376) or i == 1328:
-        pass
-    elif i in range(1155, 1161) or i == 930 or i == 907 or i == 909 or i in range(688, 904):
-        pass
-    elif i in range(168, 188) or i == 1417 or i == 1416 or i == 1418 or i == 2044 or i == 1809:
-        pass
-    else:
-        pa.append(i)
-    i += 1
-# print(len(pa)/2)
+pa = [i for i in range(33, 2045) if i not in range(127, 160+1) and i not in range(768, 879+1) and i not in range(888, 890+1) and i not in range(896, 899+1) and i not in range(1480, 1487+1) and i not in range(1515, 1518+1) and i not in range(1525, 1535+1) and i not in range(1970, 1983+1) and i not in range(2027, 2036) and i not in range(1958, 1969) and i not in range(1872, 1920) and i not in range(1839, 1869)
+      and i not in range(1770, 1808) and i not in range(1759, 1769) and i not in range(1646, 1756) and i not in range(1523, 1633) and i not in range(1424, 1480) and i not in range(1367, 1376) and i != 1328 and i not in range(1155, 1161) and i != 930 and i != 907 and i != 909 and i not in range(688, 904) and i not in range(168, 188) and i != 1417 and i != 1416 and i != 1418 and i != 2044 and i != 1809]
 with open("keys.txt", "w") as ppp:
     ppp.write("")
 
@@ -36,23 +15,11 @@ Encryption key in keys.txt"""
     else:
         pass
     var = open("keys.txt", "a")
-    for2 = ""
-    encry = ""
-    for3 = ""
-    key = ""
+    for2, encry, for3, key = "", "", "", ""
     # 4th layer???work later
     # if randint before half add to chr if after half sub chr from randint
     choose = choice(pa)
-    if pa.index(choose) < 10:
-        indexadd = "000"+str(pa.index(choose))
-    elif pa.index(choose) < 100:
-        indexadd = "00"+str(pa.index(choose))
-    elif pa.index(choose) < 1000:
-        indexadd = "0"+str(pa.index(choose))
-    elif pa.index(choose) < 10000:
-        indexadd = ""+str(pa.index(choose))
-    else:
-        pass
+    indexadd = str(pa.index(choose)).zfill(4)
     for m in range(1):
         if pa.index(choose) <= len(pa)//2:
             key += "BeL0W"+str(indexadd)
@@ -68,7 +35,6 @@ Encryption key in keys.txt"""
                         return infinite[:-1], encry
                 else:
                     return encry
-                break
             elif n == 2:
                 power = randint(0, 9)
                 key += str(power)
@@ -137,14 +103,6 @@ Encryption key in keys.txt"""
                 else:
                     return for3
 
-
-# var.write(key+"\n")
-# var.close()
-# if keyhere.lower()=="yes":
-# with open("keys.txt","r") as op:
-# infinite=op.readlines()[-1]
-# print(infinite[:-1])
-# else:pass
 with open("solved.txt", "w") as ppp:
     ppp.write("")
 
@@ -189,5 +147,5 @@ def Decrypt(encryptstring: str, key):
         return orig_str
     else:
         raise TypeError("Type Not Supported")
-# print(Encrypt("Hi im Pratham",2,"no"))
+# print(Encrypt("Hi im Pratham",randint(1,3),"yes"))
 # print(Decrypt("̫˸͓˸̣̆́˯̒˭̋̀̆","4FT3R08749"))
