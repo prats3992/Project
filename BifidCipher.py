@@ -15,7 +15,7 @@ rand_list = generate_rand_list()
 print(len(rand_list))
 
 
-def Bifid(string):
+def Bifid(string: str) -> (str, list[list[str]]):
     string += " " if len(string) % 2 != 0 else ""
     row = col = output = ""
     for i in string:
@@ -37,7 +37,7 @@ def Bifid(string):
     return output, rand_list
 
 
-def Bifid_Rev(output: str, rev_list: list):
+def Bifid_Rev(output: str, rev_list: list[list[str]]) -> str:
     y = []
     for i in range(0, len(output), 2):
         p = output[i]+output[i+1]
@@ -58,11 +58,9 @@ def Bifid_Rev(output: str, rev_list: list):
     rev = ""
     for i in range(len(col)):
         rev += rev_list[int(row[i])][int(col[i])]
-    if rev.endswith(" ") == True and len(rev.strip()) % 2 != 0:
-        rev = rev.rstrip()
-        return rev
-    else:
-        return rev
+    rev = rev.rstrip() if rev.endswith(
+        " ") == True and len(rev.strip()) % 2 != 0 else rev
+    return rev
 
 
 def main():
